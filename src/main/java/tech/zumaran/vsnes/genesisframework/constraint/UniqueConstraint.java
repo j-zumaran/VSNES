@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
 import tech.zumaran.vsnes.genesisframework.GenesisEntity;
@@ -19,6 +20,7 @@ public interface UniqueConstraint<Entity extends GenesisEntity> {
 	
 	void flushRepository();
 
+	@Transactional(readOnly = true)
 	Optional<Entity> findDuplicateEntry(Entity entity);
 	
 	default Entity uniqueInsert(Entity entity, InsertFunction<Entity> insertFunction) throws GenesisException {
