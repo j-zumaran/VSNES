@@ -9,10 +9,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface GenesisRepository<Entity extends GenesisEntity> extends JpaRepository<Entity, Long> {
 	
-	@Query(value = "SELECT * FROM #{#entityName} e WHERE e.deleted = '0'", nativeQuery = true)
+	@Query("FROM #{#entityName} e WHERE e.deleted = FALSE")
 	List<Entity> findAll();
 	
-	@Query(value = "SELECT * FROM #{#entityName} p WHERE p.id = :id AND p.deleted = '0'", nativeQuery = true)
+	@Query("FROM #{#entityName} p WHERE p.id = :id AND p.deleted = FALSE")
 	Optional<Entity> findById(@Param("id") long id);
 	
 	//====================================RecycleBin==================================================

@@ -11,10 +11,10 @@ import lombok.Setter;
 import lombok.ToString;
 import tech.zumaran.vsnes.genesisframework.GenesisEntity;
 
-@Entity
 @ToString
 @NoArgsConstructor
 @Table(name = "preference_key")
+@Entity(name = "preference_key")
 @EqualsAndHashCode(callSuper = false)
 public class PreferenceKeyEntity extends GenesisEntity implements PreferenceKey {
 	
