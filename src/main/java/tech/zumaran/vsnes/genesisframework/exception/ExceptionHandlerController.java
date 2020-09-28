@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
@@ -14,7 +15,8 @@ import tech.zumaran.vsnes.genesisframework.response.ResponseFactory;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
-public abstract class ExceptionHandlerController extends ResponseEntityExceptionHandler {
+@RestControllerAdvice
+public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 	
 	@Autowired
 	private ResponseFactory responseFactory;
