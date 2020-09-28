@@ -1,25 +1,37 @@
 package tech.zumaran.vsnes.context;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import tech.zumaran.genesis.context.GenesisContextService;
-import tech.zumaran.genesis.exception.NotFoundException;
+import tech.zumaran.genesis.exception.GenesisException;
 import tech.zumaran.vsnes.preference.PreferenceKey;
+import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
+import tech.zumaran.vsnes.preference.PreferenceKeyService;
 
-@Service
-public class UserContextService extends GenesisContextService<UserContext> {
+public abstract class UserContextService<User extends UserContext> extends GenesisContextService<User> {
 	
 	@Autowired
-	protected UserPreferenceRepository preferenceRepository;
+	protected UserPreferenceService userPreferenceService;
+	
+	@Autowired 
+	private PreferenceKeyService preferenceKeyService;
 
 	@Override
-	protected UserContext newContext(long userId) {
-		return new UserContext(userId);
+	public User registerContext(long userId) throws GenesisException {
+		User userContext = super.registerContext(userId);
+		List<UserPreference> preferences = userPreferenceService.insertAll(defaultPreferences(), userId);
+		userContext.setUserPreferences(Set.copyOf(preferences));
+		return userContext;
+	}
+	
+	protected abstract Set<UserPreference> defaultPreferences();
+	
+	protected UserPreference createPreference(PreferenceKey key) {
+		PreferenceKeyEntity prefKey = preferenceKeyService.findByKey(key);
+		return new UserPreference(prefKey, prefKey.getDefaultValue());
 	}
 
 	/*@Transactional(readOnly = true)

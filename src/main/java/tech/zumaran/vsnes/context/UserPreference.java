@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import tech.zumaran.genesis.context.ContextEntity;
@@ -14,6 +15,7 @@ import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 
 @Data
 @Entity
+@AllArgsConstructor
 @Table(name = "user_preferences")
 @EqualsAndHashCode(callSuper = false)
 public class UserPreference extends ContextEntity<UserContext> {
