@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import tech.zumaran.genesis.context.ContextEntityService;
 
 @Service
-public class UserPreferenceService extends ContextEntityService<UserContext, UserPreference> {
+public class UserPreferenceService extends ContextEntityService<UserContext, UserPreference, UserPreferenceRepository> {
 
 	@Override
 	protected Class<UserPreference> entityType() {
@@ -14,8 +14,7 @@ public class UserPreferenceService extends ContextEntityService<UserContext, Use
 
 	@Override
 	protected void update(UserPreference old, UserPreference updated) {
-		// TODO Auto-generated method stub
-		
+		return;
 	}
 
 }

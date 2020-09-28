@@ -20,7 +20,7 @@ public class UserContext extends GenesisContext {
 
 	private static final long serialVersionUID = 5907063593637305621L;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "context")
 	@Getter @Setter private Set<UserPreference> userPreferences;
 	
 	public UserContext(long userId) {

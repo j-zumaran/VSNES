@@ -6,13 +6,17 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import tech.zumaran.genesis.GenesisRepository;
 import tech.zumaran.genesis.GenesisService;
 import tech.zumaran.genesis.exception.GenesisException;
 import tech.zumaran.vsnes.preference.AppPreference;
 import tech.zumaran.vsnes.preference.AppPreferenceService;
 import tech.zumaran.vsnes.preference.DefaultAppPreference;
 
-public abstract class CodeEntityService<Code extends CodeEntity> extends GenesisService<Code> {
+public abstract class CodeEntityService
+			<Code extends CodeEntity, 
+			Repository extends GenesisRepository<Code>> 
+		extends GenesisService<Code, Repository> {
 	
 	@Autowired
 	protected CodeFormatRepository formatRepository;

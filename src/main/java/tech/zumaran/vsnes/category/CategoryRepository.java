@@ -19,7 +19,7 @@ public interface CategoryRepository<C extends Category> extends GenesisRepositor
 	@Query(value = "SELECT * FROM category p WHERE p.name = :name AND p.dtype = '#{#entityName}'", nativeQuery = true)
 	Optional<C> findByName(@Param("name") String name);
 	
-	
+	//===========================================Recycle bin===========================================================
 	
 	@Query(value = "SELECT * FROM category p WHERE p.id = :id AND p.deleted = '1' AND p.dtype = '#{#entityName}'", nativeQuery = true)
 	Optional<C> findInRecycleBinById(Long id);
