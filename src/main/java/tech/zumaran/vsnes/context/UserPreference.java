@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tech.zumaran.vsnes.genesisframework.context.ContextEntity;
 import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 
 @Data
@@ -20,7 +19,7 @@ import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 @AllArgsConstructor
 @Table(name = "user_preferences")
 @EqualsAndHashCode(callSuper = false)
-public class UserPreference extends ContextEntity<UserContext> {
+public class UserPreference extends UserEntity<UserContext> {
 
 	private static final long serialVersionUID = 4460814522797561407L;
 

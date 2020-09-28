@@ -1,4 +1,4 @@
-package tech.zumaran.vsnes.genesisframework.context;
+package tech.zumaran.vsnes.context;
 
 import java.util.Collection;
 import java.util.List;
@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import tech.zumaran.vsnes.genesisframework.exception.NotFoundException;
 import tech.zumaran.vsnes.genesisframework.exception.NotFoundInRecycleBin_Exception;
 
-public abstract class ContextEntityService
-			<Context extends GenesisContext, 
-			Entity extends ContextEntity<Context>,
-			Repository extends ContextEntityRepository<Context, Entity>> {
+public abstract class UserEntityService
+			<Context extends UserContext, 
+			Entity extends UserEntity<Context>,
+			Repository extends UserEntityRepository<Context, Entity>> {
 	 
     @Autowired
     protected Repository repository;

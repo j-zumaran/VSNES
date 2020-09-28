@@ -1,4 +1,4 @@
-package tech.zumaran.vsnes.genesisframework.context;
+package tech.zumaran.vsnes.context;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ import tech.zumaran.vsnes.genesisframework.exception.NotFoundException;
 import tech.zumaran.vsnes.genesisframework.exception.NotFoundInRecycleBin_Exception;
 import tech.zumaran.vsnes.genesisframework.response.ResponseFactory;
 
-public abstract class ContextEntityController
-			<Context extends GenesisContext,
-			ContextRepository extends GenesisContextRepository<Context>,
-			ContextService extends GenesisContextService<Context, ContextRepository>,
-			Entity extends ContextEntity<Context>,
-			Repository extends ContextEntityRepository<Context, Entity>,
-			Service extends ContextEntityService<Context, Entity, Repository>> {
+public abstract class UserEntityController
+			<Context extends UserContext,
+			ContextRepository extends UserContextRepository<Context>,
+			ContextService extends UserContextService<Context, ContextRepository>,
+			Entity extends UserEntity<Context>,
+			Repository extends UserEntityRepository<Context, Entity>,
+			Service extends UserEntityService<Context, Entity, Repository>> {
 
 	@Autowired
 	protected Service service;

@@ -2,10 +2,8 @@ package tech.zumaran.vsnes.context;
 
 import org.springframework.stereotype.Service;
 
-import tech.zumaran.vsnes.genesisframework.context.ContextEntityService;
-
 @Service
-public class UserPreferenceService extends ContextEntityService<UserContext, UserPreference, UserPreferenceRepository> {
+public class UserPreferenceService extends UserEntityService<UserContext, UserPreference, UserPreferenceRepository> {
 
 	@Override
 	protected Class<UserPreference> entityType() {

@@ -1,4 +1,4 @@
-package tech.zumaran.vsnes.genesisframework.context;
+package tech.zumaran.vsnes.context;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import tech.zumaran.vsnes.genesisframework.GenesisRepository;
 
-public interface ContextEntityRepository<Context extends GenesisContext, Entity extends ContextEntity<Context>> extends GenesisRepository<Entity> {
+public interface UserEntityRepository<Context extends UserContext, Entity extends UserEntity<Context>> extends GenesisRepository<Entity> {
 	
 	@Query(value = "SELECT * FROM #{#entityName} p WHERE p.context_id = :contextId AND p.deleted = '0'", nativeQuery = true)
 	List<Entity> findAllByContextId(@Param("contextId") long contextId);

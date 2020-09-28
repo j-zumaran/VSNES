@@ -1,4 +1,4 @@
-package tech.zumaran.vsnes.genesisframework.context;
+package tech.zumaran.vsnes.context;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 
-public abstract class GenesisContextController
-		<Context extends GenesisContext, 
-		Repository extends GenesisContextRepository<Context>,
-		Service extends GenesisContextService<Context, Repository>> {
-	
+public class UserContextController
+			<Context extends UserContext, 
+			Repository extends UserContextRepository<Context>,
+			Service extends UserContextService<Context, Repository>> {
+
 	@Autowired
 	protected Service service;
 

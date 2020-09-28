@@ -1,6 +1,7 @@
-package tech.zumaran.vsnes.genesisframework.context;
+package tech.zumaran.vsnes.context;
 
-import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,16 +18,16 @@ import tech.zumaran.vsnes.genesisframework.GenesisEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class GenesisContext extends GenesisEntity {
+public abstract class UserEntity<Context extends UserContext> extends GenesisEntity {
 	
-	private static final long serialVersionUID = 7389942231760491853L;
+	private static final long serialVersionUID = 6275836790674590500L;
 	
-	@Column(nullable = false, unique = true)
-	@Setter private long contextId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@Setter private Context context;
 	
 	@JsonIgnore
-	public long getContextId() {
-		return contextId;
+	public Context getContext() {
+		return context;
 	}
-	
+
 }

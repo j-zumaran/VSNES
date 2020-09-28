@@ -23,6 +23,7 @@ public interface UniqueConstraint<Entity extends GenesisEntity> {
 	@Transactional(readOnly = true)
 	Optional<Entity> findDuplicateEntry(Entity entity);
 	
+	@Transactional
 	default Entity uniqueInsert(Entity entity, InsertFunction<Entity> insertFunction) throws GenesisException {
 		try {
 			return insertFunction.apply(entity);
