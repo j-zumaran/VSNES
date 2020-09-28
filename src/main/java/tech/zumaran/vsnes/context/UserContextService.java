@@ -42,15 +42,11 @@ public abstract class UserContextService
 	
 	@Transactional(noRollbackFor = GenesisException.class)
 	public User registerContext(long userId) throws GenesisException {
-		User userContext = uniqueInsert(newContext(userId), this::insertContext);
+		User userContext = uniqueInsert(newContext(userId), repository::save);
+		
 		List<UserPreference> preferences = userPreferenceService.insertAll(defaultPreferences(), userContext);
 		userContext.setUserPreferences(Set.copyOf(preferences));
 		return userContext;
-	}
-	
-	@Transactional
-	private User insertContext(User context) {
-		return repository.save(context);
 	}
 	
 	protected abstract Set<UserPreference> defaultPreferences();

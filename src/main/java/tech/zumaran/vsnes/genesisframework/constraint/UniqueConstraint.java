@@ -16,7 +16,8 @@ import tech.zumaran.vsnes.genesisframework.exception.UniqueConstraintException;
 import tech.zumaran.vsnes.genesisframework.function.InsertAllFunction;
 import tech.zumaran.vsnes.genesisframework.function.InsertFunction;
 
-public interface UniqueConstraint<Entity extends GenesisEntity> {
+public interface UniqueConstraint
+		<Entity extends GenesisEntity> {
 	
 	void flushRepository();
 
