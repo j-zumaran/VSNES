@@ -10,11 +10,13 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import tech.zumaran.genesis.context.ContextEntity;
 import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 
 @Data
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "user_preferences")
 @EqualsAndHashCode(callSuper = false)

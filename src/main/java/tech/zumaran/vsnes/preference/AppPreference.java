@@ -9,10 +9,12 @@ import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import tech.zumaran.genesis.GenesisEntity;
 
 @Data
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class AppPreference extends GenesisEntity {
