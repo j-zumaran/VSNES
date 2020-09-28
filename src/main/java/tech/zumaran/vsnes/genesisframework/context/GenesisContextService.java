@@ -5,12 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import tech.zumaran.vsnes.genesisframework.constraint.UniqueConstraint;
 import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 import tech.zumaran.vsnes.genesisframework.exception.NotFoundException;
 
 public abstract class GenesisContextService
-		<Context extends GenesisContext, 
-		Repository extends GenesisContextRepository<Context>> {
+			<Context extends GenesisContext, 
+			Repository extends GenesisContextRepository<Context>> 
+		implements UniqueConstraint<Context> {
 
 	@Autowired
 	protected Repository repository;
@@ -28,6 +30,22 @@ public abstract class GenesisContextService
 	
 	@Transactional(noRollbackFor = GenesisException.class)
 	public Context registerContext(long userId) throws GenesisException {
-		return repository.saveAndFlush(newContext(userId));
+		return uniqueInsert(newContext(userId), this::insertContext);
+		
+	}
+	
+	@Transactional
+	private Context insertContext(Context context) {
+		return repository.saveAndFlush(context);
+	}
+
+	@Override
+	public void flushRepository() {
+		repository.flush();
+	}
+
+	@Override
+	public Optional<Context> findDuplicateEntry(Context entity) {
+		return repository.findByContextId(entity.getContextId());
 	}
 }

@@ -45,7 +45,7 @@ public interface UniqueConstraint<Entity extends GenesisEntity> {
 					flushRepository();
 					return duplicate;
 				} else {
-					return duplicate;
+					throw new UniqueConstraintException(sqlViolation.getErrorCode() + "", sqlViolation.getMessage());
 				}
     		} else {
     			throw new UniqueConstraintException(e.getMessage());
