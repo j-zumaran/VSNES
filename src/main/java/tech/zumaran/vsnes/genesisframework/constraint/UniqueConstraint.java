@@ -19,44 +19,37 @@ import tech.zumaran.vsnes.genesisframework.function.InsertFunction;
 public interface UniqueConstraint
 		<Entity extends GenesisEntity> {
 	
-	void flushRepository();
-
 	@Transactional(readOnly = true)
 	Optional<Entity> findDuplicateEntry(Entity entity);
 	
-	@Transactional
+	@Transactional(noRollbackFor = GenesisException.class)
 	default Entity uniqueInsert(Entity entity, InsertFunction<Entity> insertFunction) throws GenesisException {
 		try {
-			return insertFunction.apply(entity);
+			Optional<Entity> maybeDuplicate = findDuplicateEntry(entity); 
+			if (maybeDuplicate.isEmpty()) {
+				return insertFunction.apply(entity);
+			} else {
+				Entity duplicate = maybeDuplicate.get();
+				if (duplicate.isDeleted()) {
+					duplicate.setDeleted(false);
+					return duplicate;
+				} else {
+					throw new UniqueConstraintException("Duplicate entity", entity.getType(), entity.toString());
+				}
+			}
 		} catch (DataIntegrityViolationException e) {
     		final var cause = e.getMostSpecificCause();
     		
     		if (cause instanceof SQLIntegrityConstraintViolationException) {
     			final var sqlViolation = (SQLIntegrityConstraintViolationException) cause;
-    			
-    			if (sqlViolation.getErrorCode() != 1062)
-    				throw new UniqueConstraintException(sqlViolation.getErrorCode() + "", sqlViolation.getMessage());
-    			
-    			Optional<Entity> maybeDuplicate = findDuplicateEntry(entity); 
-    			
-    			if (maybeDuplicate.isEmpty())
-    				throw new UniqueConstraintException(sqlViolation.getErrorCode() + "", sqlViolation.getMessage());
-				
-    			Entity duplicate = maybeDuplicate.get();
-				
-				if (duplicate.isDeleted()) {
-					duplicate.setDeleted(false);
-					flushRepository();
-					return duplicate;
-				} else {
-					throw new UniqueConstraintException(sqlViolation.getErrorCode() + "", sqlViolation.getMessage());
-				}
+    			throw new UniqueConstraintException(sqlViolation.getErrorCode() + "", sqlViolation.getMessage());
     		} else {
     			throw new UniqueConstraintException(e.getMessage());
     		}
 		}
 	}
 
+	@Transactional(noRollbackFor = GenesisException.class)
 	default List<Entity> uniqueInsertAll(Collection<Entity> entities, InsertAllFunction<Entity> insertFunction) throws GenesisException {
 		if (entities.isEmpty()) return List.of();
 		
@@ -81,7 +74,7 @@ public interface UniqueConstraint
 				entry.duplicates.stream()
 					.filter(d -> d.isDeleted())
 					.forEach(d -> d.setDeleted(false));
-				flushRepository();
+				//flushRepository();
 				
 				inserted.addAll(entry.duplicates);
 				return inserted;

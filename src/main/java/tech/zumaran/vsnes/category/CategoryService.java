@@ -28,10 +28,5 @@ public abstract class CategoryService
 		return repository.findByName(entity.getName());
 	}
 	
-	@Override
-	public void flushRepository() {
-		repository.flush();
-	}
-	
 }
 

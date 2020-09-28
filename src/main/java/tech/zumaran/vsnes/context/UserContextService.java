@@ -55,11 +55,6 @@ public abstract class UserContextService
 		PreferenceKeyEntity prefKey = preferenceKeyService.findByKey(key);
 		return new UserPreference(prefKey, prefKey.getDefaultValue());
 	}
-	
-	@Override
-	public void flushRepository() {
-		repository.flush();
-	}
 
 	@Override
 	@Transactional(readOnly = true)
