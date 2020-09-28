@@ -66,6 +66,7 @@ public abstract class UserContextService
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<User> findDuplicateEntry(User entity) {
 		return repository.findByUserId(entity.getUserId());
 	}
