@@ -1,6 +1,6 @@
 package tech.zumaran.vsnes.contact;
 
-import tech.zumaran.genesis.exception.GenesisException;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 
 public class InvalidReputationException extends GenesisException {
 

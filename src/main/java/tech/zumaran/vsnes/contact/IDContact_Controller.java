@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import tech.zumaran.genesis.GenesisController;
-import tech.zumaran.genesis.GenesisRepository;
-import tech.zumaran.genesis.exception.GenesisException;
-import tech.zumaran.genesis.exception.NotFoundException;
 import tech.zumaran.vsnes.category.Status;
+import tech.zumaran.vsnes.genesisframework.GenesisController;
+import tech.zumaran.vsnes.genesisframework.GenesisRepository;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
+import tech.zumaran.vsnes.genesisframework.exception.NotFoundException;
 
 public abstract class IDContact_Controller
 				<ID extends IDContact,

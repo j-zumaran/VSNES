@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import tech.zumaran.genesis.GenesisRepository;
+import tech.zumaran.vsnes.genesisframework.GenesisRepository;
 
 public interface CategoryRepository<C extends Category> extends GenesisRepository<C> {
 	

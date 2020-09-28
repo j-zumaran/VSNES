@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tech.zumaran.genesis.context.GenesisContext;
+import tech.zumaran.vsnes.genesisframework.context.GenesisContext;
 
 @Entity
 @NoArgsConstructor

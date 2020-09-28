@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import tech.zumaran.genesis.GenesisEntity;
+import tech.zumaran.vsnes.genesisframework.GenesisEntity;
 
 @Entity
 @ToString

@@ -3,11 +3,11 @@ package tech.zumaran.vsnes.contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import tech.zumaran.genesis.GenesisRepository;
-import tech.zumaran.genesis.exception.GenesisException;
-import tech.zumaran.genesis.exception.NotFoundException;
 import tech.zumaran.vsnes.category.Status;
 import tech.zumaran.vsnes.code.CodeEntityService;
+import tech.zumaran.vsnes.genesisframework.GenesisRepository;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
+import tech.zumaran.vsnes.genesisframework.exception.NotFoundException;
 import tech.zumaran.vsnes.location.LocationRepository;
 
 public abstract class IDContact_Service

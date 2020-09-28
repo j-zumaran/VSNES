@@ -5,9 +5,9 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import tech.zumaran.genesis.context.GenesisContextRepository;
-import tech.zumaran.genesis.context.GenesisContextService;
-import tech.zumaran.genesis.exception.GenesisException;
+import tech.zumaran.vsnes.genesisframework.context.GenesisContextRepository;
+import tech.zumaran.vsnes.genesisframework.context.GenesisContextService;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 import tech.zumaran.vsnes.preference.PreferenceKey;
 import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 import tech.zumaran.vsnes.preference.PreferenceKeyService;

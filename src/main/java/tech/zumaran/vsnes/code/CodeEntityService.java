@@ -6,9 +6,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import tech.zumaran.genesis.GenesisRepository;
-import tech.zumaran.genesis.GenesisService;
-import tech.zumaran.genesis.exception.GenesisException;
+import tech.zumaran.vsnes.genesisframework.GenesisRepository;
+import tech.zumaran.vsnes.genesisframework.GenesisService;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 import tech.zumaran.vsnes.preference.AppPreference;
 import tech.zumaran.vsnes.preference.AppPreferenceService;
 import tech.zumaran.vsnes.preference.DefaultAppPreference;

@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import tech.zumaran.genesis.constraint.UniqueConstraint;
-import tech.zumaran.genesis.exception.GenesisException;
 import tech.zumaran.vsnes.code.CodeEntityService;
+import tech.zumaran.vsnes.genesisframework.constraint.UniqueConstraint;
+import tech.zumaran.vsnes.genesisframework.exception.GenesisException;
 
 public abstract class CategoryService
 			<Entity extends Category, 

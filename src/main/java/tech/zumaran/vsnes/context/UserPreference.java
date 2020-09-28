@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tech.zumaran.genesis.context.ContextEntity;
+import tech.zumaran.vsnes.genesisframework.context.ContextEntity;
 import tech.zumaran.vsnes.preference.PreferenceKeyEntity;
 
 @Data
